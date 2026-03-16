@@ -481,11 +481,48 @@ function adicionarNomeAnterior($form) {
  * @param $form
  */
 function buscarEndereco($form) {
-	if (document.getElementById('paisResidencia').value == CODIGO_BRASIL && !isCampoEmBranco($("#cep")) ){
-		setDispatch('carregarDadosEndereco', 'false', $('#dispatch')[0], $('#validate')[0]);
-		document.getElementById('aguarde').style.display = '';
-		$form.submit();
+	var cepField = document.getElementById('cep');
+	var cep = cepField.value.replace(/\D/g, '');
+	
+	if (cep.length !== 8) {
+		return;
 	}
+	
+	document.getElementById('aguarde').style.display = '';
+	
+	fetch('https://viacep.com.br/ws/' + cep + '/json/')
+		.then(function(response) {
+			return response.json();
+		})
+		.then(function(data) {
+			document.getElementById('aguarde').style.display = 'none';
+			
+			if (data.erro) {
+				alert('CEP nao encontrado.');
+				return;
+			}
+			
+			// Preencher campos de endereco
+			if (data.logradouro) {
+				document.getElementById('enderecoResidencia').value = data.logradouro;
+			}
+			if (data.bairro) {
+				document.getElementById('bairro').value = data.bairro;
+			}
+			if (data.localidade) {
+				document.getElementById('cidadeResidencia').value = data.localidade;
+			}
+			if (data.uf) {
+				document.getElementById('ufResidencia').value = data.uf;
+			}
+			
+			// Focar no campo logradouro para usuario continuar preenchendo
+			document.getElementById('enderecoResidencia').focus();
+		})
+		.catch(function(error) {
+			document.getElementById('aguarde').style.display = 'none';
+			console.log('Erro ao buscar CEP:', error);
+		});
 }
 
 /**
