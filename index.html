@@ -8328,9 +8328,9 @@ Por favor, ative esta funcionalidade ou atualize seu browser.
 									<label for="cidadeNascimento">Cidade*:</label>
 								</div>
 								<div class="col-md-6">
-									<span id="idComboCidadeNascimento">
-									<select name="cidadeNascimento" onblur="selecionouCidade($('#cidadeNascimento'), $('#linhaNomeCidadeNascimento'), $('#nomeCidadeNascimento'))" onfocus="guardaValorCidade($('#cidadeNascimento'))" id="cidadeNascimento" class="obrigatorio"></select>
-									</span>
+<span id="idComboCidadeNascimento">
+										<input type="text" name="cidadeNascimento" maxlength="50" value="" placeholder="Digite o nome da cidade" id="cidadeNascimento" class="obrigatorio">
+										</span>
 								</div>
 							</div>
 							
@@ -8652,7 +8652,7 @@ Por favor, ative esta funcionalidade ou atualize seu browser.
 									<label for="certidaoCidadeExpedicao">Cidade expedicao:</label>
 								</div>
 								<div class="col-md-5">
-									<select name="certidaoCidadeExpedicao" onblur="selecionouCidade($('#certidaoCidadeExpedicao'), $('#linhaCertidaoNomeCidade'), $('#certidaoNomeCidade'))" onfocus="guardaValorCidade($('#cidadeNascimento'))" id="certidaoCidadeExpedicao"></select>			    		
+									<input type="text" name="certidaoCidadeExpedicao" maxlength="50" value="" placeholder="Digite o nome da cidade" id="certidaoCidadeExpedicao">			    		
 								</div>
 							</div>
 							
@@ -25409,7 +25409,7 @@ Por favor, ative esta funcionalidade ou atualize seu browser.
 									<label for="cidadeResidencia">Cidade<span class="obrigatorioResidencia">*</span>:</label>
 								</div>
 								<div class="col-md-7">
-									<select name="cidadeResidencia" onblur="selecionouCidade($('#cidadeResidencia'), $('#linhaCidadeResidenciaEstrangeiro'), $('#cidadeResidenciaEstrangeiro'))" onfocus="guardaValorCidade($('#cidadeNascimento'))" id="cidadeResidencia" class="obrigatorioResidenciaCampo"></select>
+									<input type="text" name="cidadeResidencia" maxlength="50" value="" placeholder="Digite o nome da cidade" id="cidadeResidencia" class="obrigatorioResidenciaCampo">
 								</div>
 							</div>
 							
