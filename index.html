@@ -5034,7 +5034,7 @@ Por favor, ative esta funcionalidade ou atualize seu browser.
 <option value="3069">EQUADOR</option>
 <option value="9115">ERITR�IA</option>
 <option value="4545">ESLOV�QUIA</option>
-<option value="4502">ESLOV�NIA</option>
+<option value="4502">ESLOV��NIA</option>
 <option value="4138">ESPANHA</option>
 <option value="2038">ESTADOS UNIDOS</option>
 <option value="5118">EST�NIA</option>
@@ -8538,133 +8538,7 @@ Por favor, ative esta funcionalidade ou atualize seu browser.
 							</div>
 							</fieldset>
 						
-							<fieldset>
-							<legend class="helper">
-								<span aria-hidden="true">Certidao</span> 
-								<span class="sr-only">Preencha abaixo a Certidao do requerente:
-										Obrigatorio apenas para menores de 12 anos (Certidao
-										de Nascimento) e por requerente que ja alterou o nome em razao
-										de casamento, separacao ou divorcio (Certidao de Casamento).
-										Nao preencher se nao se enquadrar nessas duas
-										hipoteses.</span>
-							<a tabindex="0" class="btn btn-xs btn-warning help" role="button" data-toggle="certidao" 
-								data-trigger="focus" title="Ajuda: Certidao" aria-hidden="true"
-								data-content="O preenchimento deste campo e obrigatorio somente para menor de 12 anos (Certidao de Nascimento) que ainda nao tenha um dos documentos de identificacao descritos na 'lista de documentos'. Nos casos de alteracao de nome (casamento/separacao/divorcio), recomenda-se o preenchimento com os dados da certidao que traz a ultima alteracao realizada.">
-								<strong aria-hidden="true">?</strong>
-							</a> 
-							</legend>
-							
-							<div class="row">
-								<div class="col-md-7">
-									<input type="checkbox" name="chkNovaCertidao" value="on" onclick="habilitaDesabilitaCamposCertidao()" id="checkNovaCertidao" class="check"> 
-									<label for="checkNovaCertidao" id="labelCertidao">Certidao modelo novo?</label>
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="col-md-3">
-									<label for="certidaoMatricula">Matricula:</label>
-								</div>
-								<div class="col-md-3">
-									<input type="text" name="certidaoMatricula" maxlength="32" value="" onkeypress="return somenteNumerosLetras(event)" id="certidaoMatricula">
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="col-md-3">
-									<label for="certidaoTipo">
-										<span aria-hidden="true">Tipo:</span>
-										<span class="sr-only">Informe o tipo de certidao</span>
-									</label>
-								</div>
-								<div class="col-md-3">
-									<select name="certidaoTipo" id="certidaoTipo"><option value="0"></option>
-<option value="1">Certidao de Nascimento</option>
-<option value="2">Certidao de Casamento</option></select>
-								</div>
-								<div class="col-md-1">
-									<label for="certidaoNumero">Numero:</label>
-								</div>
-								<div class="col-md-2">
-									<input type="text" name="certidaoNumero" maxlength="8" value="" onkeypress="return somenteNumeros(event)" id="certidaoNumero" title="Informar somente numeros">			    		
-								</div>
-								<div class="col-md-1">
-									<label for="certidaoLivro">Livro:</label>
-								</div>
-								<div class="col-md-2">
-									<input type="text" name="certidaoLivro" maxlength="4" value="" onkeypress="return somenteNumerosLetras(event)" id="certidaoLivro">			    		
-								</div>
-							</div>
 
-							<div class="row">
-								<div class="col-md-3">
-									<label for="certidaoFolha">Folha:</label>
-								</div>
-								<div class="col-md-3">
-									<input type="text" name="certidaoFolha" maxlength="5" value="" onkeypress="return somenteNumerosLetras(event)" id="certidaoFolha">	
-								</div>
-								<div class="col-md-1">
-									<label for="certidaoCartorio">Cartorio:</label>
-								</div>
-								<div class="col-md-5">
-									<input type="text" name="certidaoCartorio" maxlength="50" value="" id="certidaoCartorio">			    		
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="col-md-3">
-									<label for="certidaoUfExpedicao">
-										<span aria-hidden="true">UF de expedicao:</span>
-										<span class="sr-only">Estado de expedicao:</span>
-									</label>
-								</div>
-								<div class="col-md-2">
-									<select name="certidaoUfExpedicao" id="certidaoUfExpedicao"><option value=""></option>
-										<option value="AC">AC</option>
-<option value="AL">AL</option>
-<option value="AM">AM</option>
-<option value="AP">AP</option>
-<option value="BA">BA</option>
-<option value="CE">CE</option>
-<option value="DF">DF</option>
-<option value="ES">ES</option>
-<option value="GO">GO</option>
-<option value="MA">MA</option>
-<option value="MG">MG</option>
-<option value="MS">MS</option>
-<option value="MT">MT</option>
-<option value="PA">PA</option>
-<option value="PB">PB</option>
-<option value="PE">PE</option>
-<option value="PI">PI</option>
-<option value="PR">PR</option>
-<option value="RJ">RJ</option>
-<option value="RN">RN</option>
-<option value="RO">RO</option>
-<option value="RR">RR</option>
-<option value="RS">RS</option>
-<option value="SC">SC</option>
-<option value="SE">SE</option>
-<option value="SP">SP</option>
-<option value="TO">TO</option></select>			    		
-								</div>
-								<div class="col-md-2 labelAlinhadoDireita">
-									<label for="certidaoCidadeExpedicao">Cidade expedicao:</label>
-								</div>
-								<div class="col-md-5">
-									<input type="text" name="certidaoCidadeExpedicao" maxlength="50" value="" placeholder="Digite o nome da cidade" id="certidaoCidadeExpedicao">			    		
-								</div>
-							</div>
-							
-							<div class="row" id="linhaCertidaoNomeCidade">
-								<div class="col-md-3">
-									<label for="certidaoNomeCidade">Nome da cidade:</label>
-								</div>
-								<div class="col-md-9">
-									<input type="text" name="certidaoNomeCidade" maxlength="30" value="" id="certidaoNomeCidade">	
-								</div>
-							</div>
-							</fieldset>
 							
 							<fieldset>
 							<legend class="helper">
@@ -8771,7 +8645,10 @@ Por favor, ative esta funcionalidade ou atualize seu browser.
 									<label for="profissao">Profissao*:</label>
 								</div>
 								<div class="col-md-7">
-									<select name="profissao" onblur="selecionouProfissao()" id="profissao"><option value=""></option>
+									<input type="text" name="profissao" maxlength="50" value="" placeholder="Digite sua profissao" id="profissao" class="obrigatorio">
+								</div>
+							</div>
+							<!-- Removido select de profissao - agora e campo texto
 										<option value="3469">ABATEDOR</option>
 <option value="2654">ACABADOR DE CALCADOS</option>
 <option value="2028">ACABADOR DE EMBALAGENS (FLEXIVEIS E CARTOTECNICAS)</option>
@@ -11442,17 +11319,7 @@ Por favor, ative esta funcionalidade ou atualize seu browser.
 <option value="3175">ZELADOR DE EDIFICIO</option>
 <option value="1510">ZOOTECNISTA</option>
 <option value="0">OUTRAS OCUPACOES NAO ESPECIFICADAS ANTERIORMENTE</option></select>
-								</div>
-							</div>
-							
-							<div class="row" id="linhaNomeProfissao">
-								<div class="col-md-3">
-									<label for="nomeProfissao">Outra profissao:</label>
-								</div>
-								<div class="col-md-7">
-									<input type="text" name="nomeProfissao" maxlength="30" value="" id="nomeProfissao">
-								</div>
-							</div>
+								Fim do select removido -->
 							
 							<div class="row">
 								<div class="col-md-3">
@@ -17255,7 +17122,7 @@ Por favor, ative esta funcionalidade ou atualize seu browser.
 <option value="1015">ANT�GUA E BARBUDA</option>
 <option value="9075">AP�TRIDA</option>
 <option value="3018">ARGENTINA</option>
-<option value="6076">ARG�LIA</option>
+<option value="6076">ARG���LIA</option>
 <option value="5010">ARM�NIA</option>
 <option value="9124">ARTSAQUE</option>
 <option value="7021">AR�BIA SAUDITA</option>
@@ -24582,7 +24449,7 @@ Por favor, ative esta funcionalidade ou atualize seu browser.
 <option value="4103">MALTA</option>
 <option value="7323">MAL�SIA</option>
 <option value="6408">MARROCOS</option>
-<option value="6424">MAURIT�NIA</option>
+<option value="6424">MAURIT���NIA</option>
 <option value="6416">MAUR�CIO</option>
 <option value="9113">MICRON�SIA</option>
 <option value="5231">MOLD�VIA</option>
