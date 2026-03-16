@@ -307,14 +307,27 @@
 
         .form-section .back-btn {
             position: fixed;
-            top: 16px;
-            left: 16px;
+            top: 8px;
+            left: 8px;
             z-index: 10000;
-            background: var(--color-surface);
-            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 6px 12px;
             border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
+            box-shadow: none;
             border: 1px solid var(--color-border);
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .form-section .back-btn:hover {
+            opacity: 1;
+        }
+
+        .form-section .back-btn svg {
+            width: 14px;
+            height: 14px;
         }
 
         .form-container {
@@ -808,10 +821,6 @@
                     Voltar ao inicio
                 </span>
                 <div class="form-container">
-                    <div class="form-header">
-                        <h2>Formulario de Solicitacao</h2>
-                        <p>Preencha todos os campos obrigatorios com atencao</p>
-                    </div>
                     <iframe src="form.html" class="form-iframe-container" id="form-iframe" title="Formulario de Solicitacao"></iframe>
                 </div>
             </div>
