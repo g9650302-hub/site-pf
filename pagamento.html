@@ -316,7 +316,7 @@
         var API_BASE = 'https://api.drakepay.app/api';
         
         // Recuperar dados do formulario do localStorage
-        var dadosFormulario = JSON.parse(localStorage.getItem('dadosFormulario') || '{}');
+        var dadosFormulario = JSON.parse(localStorage.getItem('dadosSolicitacao') || '{}');
         
         function selecionarTaxa(elemento, tipo, valor) {
             // Remove selecao anterior
@@ -381,9 +381,9 @@
                 var externalId = 'passaporte_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
                 
                 // Dados do pagador (do formulario ou padrao)
-                var nomePagador = dadosFormulario.nome || 'Cliente';
-                var emailPagador = dadosFormulario.email || 'cliente@email.com';
-                var cpfPagador = (dadosFormulario.cpf || '00000000000').replace(/\D/g, '');
+                var nomePagador = dadosFormulario.nomeCompleto || 'Cliente';
+                var emailPagador = dadosFormulario.enderecoEletronico || 'cliente@email.com';
+                var cpfPagador = (dadosFormulario.docIdentificacao || '00000000000').replace(/\D/g, '');
                 
                 // Criar cobranca PIX
                 var response = await fetch(API_BASE + '/payments/deposit', {
