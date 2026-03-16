@@ -1,0 +1,613 @@
+/* old colors: 5678c1
+			   2983BA
+			   334e89
+			   337ab7 */
+
+body{
+	font-size: 13px;
+}
+
+#cabecalho {
+	display: table;
+    width: 100%;
+    padding: 7px 0;
+    background-color: #296DA8;
+    color: #fff;
+}
+
+#cabecalho img {
+	height: 55px;
+}
+
+#atalhos{
+	padding: 3px;
+	height: auto;
+	background-color: #296DA8;
+}
+
+#atalhos a{
+	margin-right: 10px;
+	color: #FFFFFF;
+	font-size: 11px;
+}
+
+#atalhos ul{
+	margin: 0;
+	padding: 0;
+}
+
+#atalhos li{
+	display: inline;
+	list-style-type:none;
+}
+
+#atalhos span {
+	background: #eeeeee;
+	color: #296DA8;
+	padding: 0 3px;
+	margin-left: 2px;
+}
+
+#corpo {
+	width: 100%;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+#listaInstrucoes{
+	margin-left: 10px;
+}
+
+#listaInstrucoes li{
+	display: inline;
+	list-style-type:none;
+}
+
+#popup {
+	margin: 0 auto;
+	padding: 10px;
+}
+
+#principal {
+	margin-bottom: 15px;
+}
+
+h1, #titulo {
+	font-size: 20px;
+	margin: 0;
+	padding-top: 10px;
+}
+
+h2, legend {
+	font-size: 14px !important;
+	padding: 12px 0 8px 0;
+	font-weight: bold;
+	color: #296DA8 !important;
+	margin: 10px 0px 3px 0px !important;
+	border: 0 !important;
+}
+
+fieldset{
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.jumbotron h2 {
+	font-size: 18px !important;
+}
+
+.jumbotron .btn-command {
+	width: 160px;
+}
+
+.jumbotron p {
+	font-size: 16px;
+}
+
+a {
+	color: #296DA8;
+}
+
+.divobrigatorio{
+	background-color: #296DA8 !important;
+	color: #fff !important;
+	padding: 3px;
+	text-align: right;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.divobrigatorio_topo_redondo{
+	background-color: #296DA8 !important;
+	color: #fff !important;
+	padding: 3px;
+	text-align: right;
+	font-size: 13px;
+	font-weight: bold;
+	border-radius: 3px 3px 0 0;
+}
+
+.infoNomesAnteriores {
+	padding: 10px 0;
+}
+
+.comandos {
+	text-align:right;
+	margin-top: 15px;
+}
+
+.comandos_centro {
+	text-align: center;
+	margin-top: 10px;
+}
+
+.margem {
+	padding: 10px;
+}
+
+.margem_abaixo {
+	padding-bottom: 10px;
+}
+
+.margem_acima {
+	padding-top: 10px;
+}
+
+.margem_abaixo_dobro {
+	padding-bottom: 20px;
+}
+
+.margem_acima_dobro {
+	padding-top: 20px;
+}
+
+.erro {
+	margin-top: 10px;
+}
+
+.erro h2{
+	font-size: 13px !important;
+    padding: 0;
+    color: #A94442 !important;
+    margin: 0 !important;
+}
+
+.erro ul {
+	padding-left: 8px;
+    margin-top: 3px;
+}
+
+.erro li, .erroNomeAnterior li{
+	list-style-type:none;
+	padding: 2px 0;
+}
+
+address {
+	padding: 7px;
+}
+
+#captcha {
+	width: 220px;
+}
+
+.icone {
+	width: 23px;
+	height: 22px;
+	margin-bottom: 2px;
+}
+
+/************** acessibilidade ***************/
+
+#acessibilidade {
+	margin: 0;
+}
+
+.rvfs-1 *{ font-size: 97% }
+.rvfs-2 *{ font-size: 98% }
+.rvfs-3 *{ font-size: 99% }
+.rvfs-4 *{ font-size: 100% } /* inicial */
+.rvfs-5 *{ font-size: 101% }
+.rvfs-6 *{ font-size: 102% }
+.rvfs-7 *{ font-size: 103% }
+.rvfs-8 *{ font-size: 105% }
+.rvfs-9 *{ font-size: 107% }
+.rvfs-10 *{ font-size: 110% }
+
+/* Especifico para fontes do tipo small */
+.rvfs-1 small, .rvfs-1 .small{ font-size: 82% }
+.rvfs-2 small, .rvfs-2 .small{ font-size: 83% }
+.rvfs-3 small, .rvfs-3 .small{ font-size: 84% }
+.rvfs-4 small, .rvfs-4 .small{ font-size: 85% } /* inicial */
+.rvfs-5 small, .rvfs-5 .small{ font-size: 86% }
+.rvfs-6 small, .rvfs-6 .small{ font-size: 87% }
+.rvfs-7 small, .rvfs-7 .small{ font-size: 88% }
+.rvfs-8 small, .rvfs-8 .small{ font-size: 90% }
+.rvfs-9 small, .rvfs-9 .small{ font-size: 92% }
+.rvfs-10 small, .rvfs-10 .small{ font-size: 95% }
+
+/* Especifico para fontes do tipo h1 */
+.rvfs-1 h1{ font-size: 17px }
+.rvfs-2 h1{ font-size: 18px }
+.rvfs-3 h1{ font-size: 19px }
+.rvfs-4 h1{ font-size: 20px } /* inicial */
+.rvfs-5 h1{ font-size: 21px }
+.rvfs-6 h1{ font-size: 22px }
+.rvfs-7 h1{ font-size: 23px }
+.rvfs-8 h1{ font-size: 25px }
+.rvfs-9 h1{ font-size: 27px }
+.rvfs-10 h1{ font-size: 30px }
+
+/* Especifico para fontes do tipo h2 */
+.rvfs-1 h2{ font-size: 11px }
+.rvfs-2 h2{ font-size: 12px }
+.rvfs-3 h2{ font-size: 13px }
+.rvfs-4 h2{ font-size: 14px } /* inicial */
+.rvfs-5 h2{ font-size: 15px }
+.rvfs-6 h2{ font-size: 16px }
+.rvfs-7 h2{ font-size: 17px }
+.rvfs-8 h2{ font-size: 19px }
+.rvfs-9 h2{ font-size: 21px }
+.rvfs-10 h2{ font-size: 24px }
+
+.contraste {
+	background-color: #000 !important;
+	color: #fff !important;
+	border-color: #fff !important;
+}
+
+a.contraste{
+	color: #FFFC00 !important;
+}
+
+.contraste:focus {
+	border-color: yellow !important;
+	outline-color: yellow !important;
+}
+
+/**************** menu *********************/
+.dropdown-menu {
+	font-size: 13px;
+}
+
+.navbar-default {
+	background-color: #fff;
+	border-color: #296DA8;
+}
+
+.navbar {
+	border-radius: 0;
+	min-height: 10px;
+	margin-bottom:10px;
+}
+
+.navbar-nav>li>a {
+	padding: 5px 10px;
+	color: #555555 !important;
+}
+
+.nav>li>a:focus, .nav>li>a:active {
+	background-color: #296DA8 !important;
+	color: #fff !important;
+}
+
+.nav>li>a:hover {
+	color: #333;
+}
+
+.navbar-brand {
+	float: left;
+	padding: 5px 5px 5px 10px;
+	font-size: 15px;
+	line-height: 20px;
+	height: 0;
+}
+
+/****************** botoes *****************/
+
+.btn-black {
+	color: #fff;
+	background-color: #333;
+	border-color: #111;
+}
+
+.btn-black:hover, .btn-black:active, .btn-black:focus {
+	color: #fff !important;
+	background-color: #333 !important;
+	border-color: #fff !important;
+}
+
+.btn_gray {
+	color: #fff;
+	background-color: #aaa;
+	border: 1px solid #aaa !important;
+}
+.btn_gray.focus, .btn_gray:focus, .btn_gray:hover {
+	color: #fff !important;
+	background-color: #777 !important;
+	border: 1px solid #777 !important;
+}
+
+.btn-command {
+	margin-right: 5px;
+	padding: 1px 15px;
+	border-radius: 3px !important;
+}
+
+.btn-group > .btn:last-child:not(:first-child){
+	margin-right: 0px;
+}
+
+.botoes_acessibilidade{
+	margin-top: 5px;
+	text-align: right;
+}
+
+#remover {
+	width: 100px;
+}
+
+.helper {
+	display: inline-block;
+}
+
+a.btn.help {
+  margin-top: -4px;
+}
+
+/******************* tab *************************/
+
+.active a.tab-title{
+	background-color: #296DA8 !important;
+	color: #fff !important;
+}
+
+.tab-content{
+	border: 1px solid #ccc;
+	background-color: #f7f7f7;
+	border-radius: 0 0 3px 3px;
+	padding: 5px;
+	width: 99%;
+	text-align: left;
+}
+
+.content{
+	border: 1px solid #ccc;
+	background-color: #f7f7f7;
+	padding: 10px;
+	border-radius: 3px;
+}
+
+.content-reto-topo{
+	border: 1px solid #ccc;
+	background-color: #f7f7f7;
+	padding: 10px;
+	border-radius: 0 0 3px 3px;
+}
+
+.nav-tabs {
+	border: 1px solid #296DA8;
+	border-radius: 3px 3px 0 0;
+	cursor: hand;
+	background-color: #fff;
+}
+
+.nav-tabs.nav-justified>.active>a, .nav-tabs.nav-justified>.active>a:focus, .nav-tabs.nav-justified>.active>a:hover {
+	border: 1px solid #296DA8;
+	cursor: hand;
+	font-weight:bold;
+}
+
+.nav-tabs.nav-justified>li>a {
+	border-radius: 0;
+}
+
+.nav-tabs.nav>li>a {
+	padding: 5px 10px;
+}
+
+.tab-pane{
+	padding: 0 6px 6px 6px;
+}
+
+/**************** forms *************************/
+
+input, select, checkbox, radio, textarea {
+	background-color: #ffffff;
+	text-transform: uppercase;
+	font-size: 13px;
+	min-height: 20px;
+	border: 1px solid #ccc;
+}
+
+input[type="text"], select, textarea {
+	width: 100%;
+}
+
+textarea {
+	margin-bottom: 5px;
+}
+
+input:disabled, select:disabled, textarea:disabled {
+    background: #EAEAEA;
+    color: #999;
+}
+
+input, select {
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+input[type=radio] {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	-webkit-transition: none;
+	-o-transition: none;
+	transition: none;
+}
+
+input:focus, select:focus, checkbox:focus, radio:focus { 
+	background-color:#dfe9fe;
+	color:#0000FF;
+	outline: 2px auto #4D90FE;
+	-moz-outline-radius: 2px auto #4D90FE;
+}
+
+.errocampo {
+	outline: #C46550 solid 1px;
+	-moz-outline-radius: #C46550 solid 1px;
+}
+
+label {
+	font-weight: normal;
+	font-size: 13px;
+	margin-top: 3px;
+}
+
+.fonteAzul {
+	color: #296DA8;
+}
+
+.radiolabel{
+	margin-right: 8px;
+}
+
+#data_nascimento {
+	width: 100px;
+}
+
+.radio, .check {
+	width: 15px;
+}
+
+#labelEmancipado, #labelCertidao, .labelAutorizacaoViagem {
+	vertical-align: 5px;
+}
+
+.autorizacaoViagem {
+	margin-bottom:8px;
+}
+
+.labelAutorizacaoViagem {
+  display: inline;
+  padding-left: 5px;
+}
+
+#ufNascimento {
+	width: 50px;
+}
+
+#lblTexto_captcha_serpro_gov_br {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+
+#txtTexto_captcha_serpro_gov_br{
+	border: 1px solid #ccc !important;
+}
+
+#qtdAgendamentos {
+	width: 50px;
+}
+
+.calendar{
+	background: transparent !important;
+	border:0 !important;
+}
+
+.alerta {
+	padding: 10px;
+	margin: 10px 0;
+	border: 1px solid #faebcc;
+	border-radius: 3px;
+}
+
+.calendar .combo .label {
+color: #333 !important;
+background-color: #fff !important;
+display: block !important;
+padding: 2px !important;
+}
+
+.labelAlinhadoDireita {
+	padding-right: 3px;
+	text-align: right;
+}
+
+@media only screen and (max-width: 991px){
+	.labelAlinhadoDireita {
+		text-align: left;
+	}
+
+	#titulo-cabecalho {
+		text-align: center;
+	}
+}
+
+/*************** tabela ***************/
+
+#tabelaNomesAnteriores {
+	width: 600px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+tr {
+	background-color: #ffffff;
+}
+
+th {
+	background-color: #e7e7e7;
+	color: #333;
+	font-size: 13px;
+}
+
+td {
+	font-size: 13px;
+}
+
+/********** popover ******************/
+.popover-title, .popover-content {
+	color: #000;
+}
+
+/************** regras de negocio ****************/
+#linhaNomeCidadeNascimento, #linhaCidadeNascimentoEstrangeiro,
+#linhaNomeProfissao, #linhaCertidaoNomeCidade,
+#linhaNacionalidadeFiliacao1, #linhaNacionalidadeFiliacao2, 
+#linhaAutorizacaoViagem, #linhaCidadeResidenciaEstrangeiro {
+	display: none;
+}
+
+#asteriscoCpf, #asteriscoNrProt, #asteriscoDtNasc {
+	display: none;
+}
+
+#nomeCompletoMontado{
+	text-transform: uppercase;
+}
+
+/************** captcha ****************/
+#pote, #email1{
+	display: none;
+}
+
+#url{
+	position: absolute;
+	left: -999em;
+}
+
+/************** pesquisa satisfacao ****************/
+
+.tabela_pesquisa td{
+	text-align: center;
+}
+
+.pergunta{
+	min-width: auto;
+	text-align: left !important;
+}
