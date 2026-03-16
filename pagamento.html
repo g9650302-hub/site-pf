@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento - Selecione a Taxa</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="sinpa.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .container-pagamento {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .header-pagamento {
+            background-color: #1351b4;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .header-pagamento h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content-pagamento {
+            background-color: white;
+            padding: 30px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .taxa-option {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .taxa-option:hover {
+            border-color: #1351b4;
+            background-color: #f8f9fa;
+        }
+        .taxa-option.selected {
+            border-color: #1351b4;
+            background-color: #e8f0fe;
+        }
+        .taxa-option input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.3);
+        }
+        .taxa-option label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+        .taxa-info {
+            flex: 1;
+        }
+        .taxa-nome {
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+        }
+        .taxa-descricao {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .taxa-valor {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1351b4;
+        }
+        .btn-pagar {
+            background-color: #1351b4;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .btn-pagar:hover {
+            background-color: #0c3d91;
+        }
+        .btn-pagar:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .btn-voltar {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-voltar:hover {
+            background-color: #5a6268;
+        }
+        
+        /* Tela de PIX */
+        .pix-container {
+            display: none;
+            text-align: center;
+        }
+        .pix-container.active {
+            display: block;
+        }
+        .selecao-container.hidden {
+            display: none;
+        }
+        .qrcode-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 20px 0;
+        }
+        .qrcode-container img {
+            max-width: 250px;
+            height: auto;
+        }
+        .pix-copia-cola {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .btn-copiar {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-copiar:hover {
+            background-color: #218838;
+        }
+        .status-pagamento {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .status-pendente {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .status-confirmado {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .status-erro {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #1351b4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .valor-total {
+            font-size: 28px;
+            color: #1351b4;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .info-pix {
+            background-color: #e7f3ff;
+            border-left: 4px solid #1351b4;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .info-pix h4 {
+            margin-top: 0;
+            color: #1351b4;
+        }
+        .info-pix ul {
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-pagamento">
+        <div class="header-pagamento">
+            <h1>Pagamento da Taxa</h1>
+        </div>
+        
+        <div class="content-pagamento">
+            <!-- Selecao de Taxa -->
+            <div class="selecao-container" id="selecaoContainer">
+                <h3>Selecione o tipo de taxa:</h3>
+                <p style="color: #666; margin-bottom: 20px;">Escolha a opcao que corresponde a sua situacao</p>
+                
+                <div class="taxa-option" onclick="selecionarTaxa(this, 'comum', 257.25)">
+                    <label>
+                        <input type="radio" name="taxa" value="comum" id="taxaComum">
+                        <div class="taxa-info">
+                            <div class="taxa-nome">Passaporte Comum</div>
+                            <div class="taxa-descricao">Primeira via ou renovacao do passaporte</div>
+                        </div>
+                        <div class="taxa-valor">R$ 257,25</div>
+                    </label>
+                </div>
+                
+                <div class="taxa-option" onclick="selecionarTaxa(this, 'urgencia', 334.42)">
+                    <label>
+                        <input type="radio" name="taxa" value="urgencia" id="taxaUrgencia">
+                        <div class="taxa-info">
+                            <div class="taxa-nome">Passaporte com Urgencia/Emergencia</div>
+                            <div class="taxa-descricao">Para casos de urgencia ou emergencia comprovada</div>
+                        </div>
+                        <div class="taxa-valor">R$ 334,42</div>
+                    </label>
+                </div>
+                
+                <div class="taxa-option" onclick="selecionarTaxa(this, 'extravio', 514.50)">
+                    <label>
+                        <input type="radio" name="taxa" value="extravio" id="taxaExtravio">
+                        <div class="taxa-info">
+                            <div class="taxa-nome">Passaporte Extraviado</div>
+                            <div class="taxa-descricao">Se voce perdeu o passaporte valido e nao apresenta o antigo</div>
+                        </div>
+                        <div class="taxa-valor">R$ 514,50</div>
+                    </label>
+                </div>
+                
+                <button class="btn-pagar" id="btnContinuar" onclick="gerarPix()" disabled>
+                    Continuar para Pagamento PIX
+                </button>
+                
+                <button class="btn-voltar" onclick="window.history.back()">
+                    Voltar ao Formulario
+                </button>
+            </div>
+            
+            <!-- Tela de PIX -->
+            <div class="pix-container" id="pixContainer">
+                <h3>Pague via PIX</h3>
+                
+                <div class="valor-total" id="valorTotal">R$ 0,00</div>
+                
+                <div class="info-pix">
+                    <h4>Como pagar:</h4>
+                    <ul>
+                        <li>Abra o aplicativo do seu banco</li>
+                        <li>Escolha a opcao PIX</li>
+                        <li>Escaneie o QR Code ou copie o codigo</li>
+                        <li>Confirme o pagamento</li>
+                    </ul>
+                </div>
+                
+                <div class="qrcode-container" id="qrcodeContainer">
+                    <div class="loading"></div>
+                    <p>Gerando QR Code...</p>
+                </div>
+                
+                <div id="pixCopiaCola" style="display: none;">
+                    <p><strong>PIX Copia e Cola:</strong></p>
+                    <div class="pix-copia-cola" id="codigoPix"></div>
+                    <button class="btn-copiar" onclick="copiarPix()">Copiar Codigo PIX</button>
+                </div>
+                
+                <div class="status-pagamento status-pendente" id="statusPagamento">
+                    <span class="loading"></span>
+                    Aguardando pagamento...
+                </div>
+                
+                <button class="btn-voltar" onclick="voltarSelecao()" style="margin-top: 20px;">
+                    Voltar e Escolher Outra Taxa
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="jquery-1.11.2.min.js"></script>
+    <script>
+        var taxaSelecionada = null;
+        var valorSelecionado = 0;
+        var transactionId = null;
+        var checkStatusInterval = null;
+        var token = null;
+        
+        // Credenciais da API DrakePay
+        var CLIENT_ID = 'dp_8a4825614b91364e33fd62d6f57d3839';
+        var CLIENT_SECRET = 'dps_497ced512087242b7d8fa1f9839440d9f28530fd46987305a249fdeb81b59c45';
+        var API_BASE = 'https://api.drakepay.app/api';
+        
+        // Recuperar dados do formulario do localStorage
+        var dadosFormulario = JSON.parse(localStorage.getItem('dadosSolicitacao') || '{}');
+        
+        function selecionarTaxa(elemento, tipo, valor) {
+            // Remove selecao anterior
+            document.querySelectorAll('.taxa-option').forEach(function(el) {
+                el.classList.remove('selected');
+            });
+            
+            // Adiciona selecao atual
+            elemento.classList.add('selected');
+            elemento.querySelector('input[type="radio"]').checked = true;
+            
+            taxaSelecionada = tipo;
+            valorSelecionado = valor;
+            
+            // Habilita botao
+            document.getElementById('btnContinuar').disabled = false;
+        }
+        
+        async function obterToken() {
+            try {
+                var response = await fetch(API_BASE + '/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        client_id: CLIENT_ID,
+                        client_secret: CLIENT_SECRET
+                    })
+                });
+                
+                var data = await response.json();
+                
+                if (data.success && data.token) {
+                    token = data.token;
+                    return token;
+                } else {
+                    throw new Error(data.error || 'Erro ao obter token');
+                }
+            } catch (error) {
+                console.error('Erro ao obter token:', error);
+                throw error;
+            }
+        }
+        
+        async function gerarPix() {
+            if (!taxaSelecionada) {
+                alert('Por favor, selecione uma taxa.');
+                return;
+            }
+            
+            // Mostrar tela de PIX
+            document.getElementById('selecaoContainer').classList.add('hidden');
+            document.getElementById('pixContainer').classList.add('active');
+            document.getElementById('valorTotal').textContent = 'R$ ' + valorSelecionado.toFixed(2).replace('.', ',');
+            
+            try {
+                // Obter token primeiro
+                await obterToken();
+                
+                // Gerar ID unico para a transacao
+                var externalId = 'passaporte_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                
+                // Dados do pagador (do formulario ou padrao)
+                var nomePagador = dadosFormulario.nomeCompleto || 'Cliente';
+                var emailPagador = dadosFormulario.enderecoEletronico || 'cliente@email.com';
+                var cpfPagador = (dadosFormulario.docIdentificacao || '00000000000').replace(/\D/g, '');
+                
+                // Criar cobranca PIX
+                var response = await fetch(API_BASE + '/payments/deposit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
+                    },
+                    body: JSON.stringify({
+                        amount: valorSelecionado,
+                        external_id: externalId,
+                        payer: {
+                            name: nomePagador,
+                            email: emailPagador,
+                            document: cpfPagador
+                        }
+                    })
+                });
+                
+                var data = await response.json();
+                
+                if (data.success) {
+                    transactionId = data.transactionId;
+                    
+                    // Exibir QR Code
+                    var qrcodeContainer = document.getElementById('qrcodeContainer');
+                    qrcodeContainer.innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + encodeURIComponent(data.qrcode) + '" alt="QR Code PIX">';
+                    
+                    // Exibir codigo copia e cola
+                    document.getElementById('codigoPix').textContent = data.qrcode;
+                    document.getElementById('pixCopiaCola').style.display = 'block';
+                    
+                    // Iniciar verificacao de status
+                    iniciarVerificacaoStatus();
+                } else {
+                    throw new Error(data.error || 'Erro ao gerar PIX');
+                }
+            } catch (error) {
+                console.error('Erro ao gerar PIX:', error);
+                document.getElementById('qrcodeContainer').innerHTML = '<p style="color: red;">Erro ao gerar QR Code. Tente novamente.</p>';
+                document.getElementById('statusPagamento').className = 'status-pagamento status-erro';
+                document.getElementById('statusPagamento').innerHTML = 'Erro: ' + error.message;
+            }
+        }
+        
+        function iniciarVerificacaoStatus() {
+            // Verificar status a cada 5 segundos
+            checkStatusInterval = setInterval(async function() {
+                try {
+                    var response = await fetch(API_BASE + '/transactions/getStatusTransac/' + transactionId, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': 'Bearer ' + token
+                        }
+                    });
+                    
+                    var data = await response.json();
+                    
+                    if (data.status === 'COMPLETED') {
+                        clearInterval(checkStatusInterval);
+                        document.getElementById('statusPagamento').className = 'status-pagamento status-confirmado';
+                        document.getElementById('statusPagamento').innerHTML = 'Pagamento Confirmado! Redirecionando...';
+                        
+                        // Salvar comprovante
+                        localStorage.setItem('pagamentoConfirmado', JSON.stringify({
+                            transactionId: transactionId,
+                            valor: valorSelecionado,
+                            taxa: taxaSelecionada,
+                            data: new Date().toISOString()
+                        }));
+                        
+                        // Redirecionar para pagina de confirmacao
+                        setTimeout(function() {
+                            window.location.href = 'confirmacao.html';
+                        }, 2000);
+                    } else if (data.status === 'FAILED') {
+                        clearInterval(checkStatusInterval);
+                        document.getElementById('statusPagamento').className = 'status-pagamento status-erro';
+                        document.getElementById('statusPagamento').innerHTML = 'Pagamento falhou ou expirou. Tente novamente.';
+                    }
+                } catch (error) {
+                    console.error('Erro ao verificar status:', error);
+                }
+            }, 5000);
+        }
+        
+        function copiarPix() {
+            var codigo = document.getElementById('codigoPix').textContent;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(codigo).then(function() {
+                    alert('Codigo PIX copiado!');
+                }).catch(function() {
+                    copiarFallback(codigo);
+                });
+            } else {
+                copiarFallback(codigo);
+            }
+        }
+        
+        function copiarFallback(texto) {
+            var textArea = document.createElement('textarea');
+            textArea.value = texto;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert('Codigo PIX copiado!');
+        }
+        
+        function voltarSelecao() {
+            if (checkStatusInterval) {
+                clearInterval(checkStatusInterval);
+            }
+            document.getElementById('pixContainer').classList.remove('active');
+            document.getElementById('selecaoContainer').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

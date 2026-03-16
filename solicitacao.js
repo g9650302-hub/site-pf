@@ -926,10 +926,25 @@ function avisosUsuario() {
  */
 function processarSolicitacao() {
 	if (validarCamposSolicitacao()) {
-		avisosUsuario();
-		$('#dispatch').val('solicitarPassaporte');
-		setValidate(true);
-		$('#formNovoPassaporte').submit();
+		// Salvar dados do formulario no localStorage
+		var formData = {};
+		var form = document.getElementById('formNovoPassaporte');
+		var inputs = form.querySelectorAll('input, select, textarea');
+		inputs.forEach(function(input) {
+			if (input.name) {
+				if (input.type === 'checkbox' || input.type === 'radio') {
+					if (input.checked) {
+						formData[input.name] = input.value;
+					}
+				} else {
+					formData[input.name] = input.value;
+				}
+			}
+		});
+		localStorage.setItem('dadosSolicitacao', JSON.stringify(formData));
+		
+		// Redirecionar para pagina de pagamento
+		window.location.href = 'pagamento.html';
 	} else if ($tab) {
 		$tab.tab('show');
 	}
