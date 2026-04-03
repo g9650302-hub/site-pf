@@ -12,8 +12,11 @@ let tokenExpiry = null;
 async function obterToken() {
     // Se temos um token válido em cache, usa ele
     if (cachedToken && tokenExpiry && Date.now() < tokenExpiry) {
+        console.log('[v0] Usando token em cache');
         return cachedToken;
     }
+
+    console.log('[v0] Obtendo novo token DrakePay...');
 
     const response = await fetch(`${API_BASE}/auth/login`, {
         method: 'POST',
@@ -27,6 +30,8 @@ async function obterToken() {
     });
 
     const data = await response.json();
+
+    console.log('[v0] Resposta auth DrakePay:', data.success ? 'sucesso' : data.error);
 
     if (!data.success || !data.token) {
         throw new Error(data.error || 'Erro ao obter token de autenticação');
@@ -58,6 +63,21 @@ export default async function handler(req, res) {
             return res.status(400).json({ success: false, error: 'ID da transação obrigatório' });
         }
 
+        console.log('[v0] Consultando status da transação:', transactionId);
+
+        // Primeiro, verificar se já temos confirmação via webhook
+        if (global.pixConfirmacoes && global.pixConfirmacoes[transactionId]) {
+            console.log('[v0] Usando confirmação do webhook');
+            return res.status(200).json({
+                success: true,
+                status: global.pixConfirmacoes[transactionId].status,
+                confirmedAt: global.pixConfirmacoes[transactionId].confirmedAt
+            });
+        }
+
+        // Se não tem confirmação do webhook, consultar DrakePay
+        console.log('[v0] Consultando DrakePay...');
+
         // Obter token de autenticação
         const token = await obterToken();
 
@@ -74,6 +94,11 @@ export default async function handler(req, res) {
 
         const statusData = await statusResponse.json();
 
+        console.log('[v0] Resposta DrakePay:', {
+            status: statusData.status,
+            success: statusData.success
+        });
+
         // Retornar dados do status
         return res.status(200).json({
             success: true,
@@ -86,7 +111,7 @@ export default async function handler(req, res) {
         });
 
     } catch (error) {
-        console.error('Erro ao consultar status:', error);
+        console.error('[v0] Erro ao consultar status:', error);
         return res.status(500).json({ 
             success: false, 
             error: 'Erro interno do servidor' 
