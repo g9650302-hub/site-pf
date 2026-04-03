@@ -308,12 +308,9 @@
         var valorSelecionado = 0;
         var transactionId = null;
         var checkStatusInterval = null;
-        var token = null;
         
-        // Credenciais da API DrakePay
-        var CLIENT_ID = 'dp_8a4825614b91364e33fd62d6f57d3839';
-        var CLIENT_SECRET = 'dps_497ced512087242b7d8fa1f9839440d9f28530fd46987305a249fdeb81b59c45';
-        var API_BASE = 'https://api.drakepay.app/api';
+        // URL base da API (backend seguro)
+        var API_BASE = '/api/pix';
         
         // Recuperar dados do formulario do localStorage
         var dadosFormulario = JSON.parse(localStorage.getItem('dadosSolicitacao') || '{}');
@@ -335,33 +332,6 @@
             document.getElementById('btnContinuar').disabled = false;
         }
         
-        async function obterToken() {
-            try {
-                var response = await fetch(API_BASE + '/auth/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        client_id: CLIENT_ID,
-                        client_secret: CLIENT_SECRET
-                    })
-                });
-                
-                var data = await response.json();
-                
-                if (data.success && data.token) {
-                    token = data.token;
-                    return token;
-                } else {
-                    throw new Error(data.error || 'Erro ao obter token');
-                }
-            } catch (error) {
-                console.error('Erro ao obter token:', error);
-                throw error;
-            }
-        }
-        
         async function gerarPix() {
             if (!taxaSelecionada) {
                 alert('Por favor, selecione uma taxa.');
@@ -374,9 +344,6 @@
             document.getElementById('valorTotal').textContent = 'R$ ' + valorSelecionado.toFixed(2).replace('.', ',');
             
             try {
-                // Obter token primeiro
-                await obterToken();
-                
                 // Gerar ID unico para a transacao
                 var externalId = 'passaporte_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
                 
@@ -385,12 +352,11 @@
                 var emailPagador = dadosFormulario.enderecoEletronico || 'cliente@email.com';
                 var cpfPagador = (dadosFormulario.docIdentificacao || '00000000000').replace(/\D/g, '');
                 
-                // Criar cobranca PIX
-                var response = await fetch(API_BASE + '/payments/deposit', {
+                // Criar cobranca PIX via backend seguro
+                var response = await fetch(API_BASE + '/criar', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + token
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
                         amount: valorSelecionado,
@@ -433,11 +399,8 @@
             // Verificar status a cada 5 segundos
             checkStatusInterval = setInterval(async function() {
                 try {
-                    var response = await fetch(API_BASE + '/transactions/getStatusTransac/' + transactionId, {
-                        method: 'GET',
-                        headers: {
-                            'Authorization': 'Bearer ' + token
-                        }
+                    var response = await fetch(API_BASE + '/status?transactionId=' + transactionId, {
+                        method: 'GET'
                     });
                     
                     var data = await response.json();
