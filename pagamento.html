@@ -347,10 +347,19 @@
                 // Gerar ID unico para a transacao
                 var externalId = 'passaporte_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
                 
+                // Debug: verificar dados do formulario
+                console.log('[v0] Dados do formulario:', dadosFormulario);
+                
                 // Dados do pagador (do formulario ou padrao)
+                // Campos do formulario: nomeCompleto, enderecoEletronico, cpf
                 var nomePagador = dadosFormulario.nomeCompleto || 'Cliente';
                 var emailPagador = dadosFormulario.enderecoEletronico || 'cliente@email.com';
-                var cpfPagador = (dadosFormulario.docIdentificacao || '00000000000').replace(/\D/g, '');
+                var cpfPagador = (dadosFormulario.cpf || '00000000000').replace(/\D/g, '');
+                
+                // Debug: verificar dados do pagador
+                console.log('[v0] Nome:', nomePagador);
+                console.log('[v0] Email:', emailPagador);
+                console.log('[v0] CPF:', cpfPagador);
                 
                 // Criar cobranca PIX via backend seguro
                 var response = await fetch(API_BASE + '/criar', {
@@ -370,6 +379,10 @@
                 });
                 
                 var data = await response.json();
+                
+                // Debug: verificar resposta da API
+                console.log('[v0] Resposta da API:', data);
+                console.log('[v0] Status HTTP:', response.status);
                 
                 if (data.success) {
                     transactionId = data.transactionId;
