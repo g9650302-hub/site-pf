@@ -66,7 +66,7 @@ export default async function handler(req, res) {
         // Parse do body
         const event = JSON.parse(rawBody);
 
-        console.log('Webhook DrakePay recebido:', {
+        console.log('[v0] Webhook DrakePay recebido:', {
             transaction_id: event.transaction_id,
             status: event.status,
             amount: event.amount,
@@ -77,36 +77,56 @@ export default async function handler(req, res) {
         switch (event.status) {
             case 'PENDING':
                 // Transação criada, aguardando pagamento
-                console.log(`Transação ${event.transaction_id} aguardando pagamento`);
+                console.log(`[v0] Transação ${event.transaction_id} aguardando pagamento`);
                 break;
 
             case 'COMPLETED':
                 // Pagamento confirmado!
-                console.log(`Pagamento ${event.transaction_id} confirmado!`);
-                console.log(`Valor: R$ ${event.amount}, Líquido: R$ ${event.net_amount}`);
-                // Aqui você pode:
-                // - Atualizar status no banco de dados
-                // - Enviar email de confirmação
-                // - Liberar acesso ao serviço
+                console.log(`[v0] Pagamento ${event.transaction_id} confirmado!`);
+                console.log(`[v0] Valor: R$ ${event.amount}, Líquido: R$ ${event.net_amount}`);
+                
+                // Salvar comprovante de pagamento em cache na memória do servidor
+                // Em produção, isso seria salvo em um banco de dados
+                if (!global.pixConfirmacoes) {
+                    global.pixConfirmacoes = {};
+                }
+                global.pixConfirmacoes[event.transaction_id] = {
+                    status: 'COMPLETED',
+                    amount: event.amount,
+                    net_amount: event.net_amount,
+                    confirmedAt: new Date().toISOString()
+                };
+                
+                console.log(`[v0] Comprovante armazenado para transação: ${event.transaction_id}`);
                 break;
 
             case 'FAILED':
                 // Pagamento falhou ou expirou
-                console.log(`Pagamento ${event.transaction_id} falhou: ${event.reason}`);
+                console.log(`[v0] Pagamento ${event.transaction_id} falhou: ${event.reason}`);
+                
+                // Salvar falha no cache
+                if (!global.pixConfirmacoes) {
+                    global.pixConfirmacoes = {};
+                }
+                global.pixConfirmacoes[event.transaction_id] = {
+                    status: 'FAILED',
+                    reason: event.reason,
+                    failedAt: new Date().toISOString()
+                };
                 break;
 
             case 'MED':
                 // Mecanismo Especial de Devolução (chargeback)
-                console.log(`MED recebido para ${event.transaction_id}: ${event.reason}`);
+                console.log(`[v0] MED recebido para ${event.transaction_id}: ${event.reason}`);
                 break;
 
             case 'REFUND':
                 // Reembolso
-                console.log(`Reembolso ${event.transaction_id}: R$ ${event.refund_amount}`);
+                console.log(`[v0] Reembolso ${event.transaction_id}: R$ ${event.refund_amount}`);
                 break;
 
             default:
-                console.log(`Status desconhecido: ${event.status}`);
+                console.log(`[v0] Status desconhecido: ${event.status}`);
         }
 
         // Retornar 200 OK para confirmar recebimento

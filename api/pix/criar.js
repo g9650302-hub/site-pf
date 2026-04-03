@@ -95,6 +95,11 @@ export default async function handler(req, res) {
         // Obter token de autenticação
         const token = await obterToken();
 
+        // URL base do site para webhook
+        const baseUrl = process.env.VERCEL_URL 
+            ? `https://${process.env.VERCEL_URL}` 
+            : 'https://v0-passaporte-2026.vercel.app';
+        
         // Criar cobrança PIX
         const pixPayload = {
             amount: parseFloat(amount),
@@ -103,13 +108,10 @@ export default async function handler(req, res) {
                 name: payer.name,
                 email: payer.email,
                 document: cpf
-            }
+            },
+            // URL de webhook para receber confirmação de pagamento
+            clientCallbackUrl: clientCallbackUrl || `${baseUrl}/api/pix/webhook`
         };
-
-        // Adicionar URL de callback se fornecida
-        if (clientCallbackUrl) {
-            pixPayload.clientCallbackUrl = clientCallbackUrl;
-        }
 
         console.log('[v0] Enviando para DrakePay:', JSON.stringify(pixPayload, null, 2));
 
