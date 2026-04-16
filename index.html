@@ -708,18 +708,19 @@
 
         /* Disclaimer Banner */
         .disclaimer-banner {
-            background: #dc2626;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
             color: white;
-            padding: 16px 24px;
+            padding: 14px 24px;
             text-align: center;
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-weight: 500;
+            font-size: 0.875rem;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1001;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            line-height: 1.5;
         }
 
         .disclaimer-banner-close {
@@ -764,7 +765,7 @@
 <body>
     <!-- Disclaimer Banner -->
     <div class="disclaimer-banner">
-        <span>⚠️ AVISO IMPORTANTE: Somos uma empresa privada de assessoria e NÃO temos vínculo com a Polícia Federal ou órgãos do governo. Cobramos uma taxa de serviço para auxiliar no seu processo.</span>
+        <span>Este site não faz parte do Google LLC ou do Facebook Inc. e não oferecemos nenhum tipo de documento ou serviço do governo. Somos uma agência de turismo especializada em desembaraço de documentos para viagens, contando com assessoria jurídica para casos específicos.</span>
         <button class="disclaimer-banner-close" onclick="closeBanner()">×</button>
     </div>
 
@@ -843,6 +844,17 @@
                             <p>Apos a confirmacao, voce recebera todas as orientacoes necessarias para prosseguir com sua solicitacao.</p>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- Service Notice -->
+            <section style="padding: 48px 24px; background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%); text-align: center;">
+                <div class="container">
+                    <h2 style="font-size: 1.75rem; font-weight: 700; color: white; margin-bottom: 12px;">Este e um servico opcional e privado!</h2>
+                    <p style="font-size: 1rem; color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto;">
+                        Nao somos a Policia Federal ou qualquer orgao do governo. Oferecemos assessoria especializada para facilitar seu processo. 
+                        <a href="https://www.gov.br/servicos/passaporte" target="_blank" style="color: #fbbf24; text-decoration: underline; font-weight: 500;">Voce tambem pode fazer gratuitamente pelo portal oficial.</a>
+                    </p>
                 </div>
             </section>
 
@@ -1053,6 +1065,12 @@
 
                     <h3>Quanto tempo demora o processo?</h3>
                     <p>O preenchimento do formulario leva aproximadamente 10-15 minutos. Apos o pagamento, voce recebera as orientacoes imediatamente.</p>
+
+                    <h3>Essa atividade de assessoria e legal?</h3>
+                    <p><strong>Sim!</strong> A atividade de Agência de Turismo é devidamente regulamentada pela Lei nº 11.771/2008 e pela Lei nº 12.974/2014. Conforme o Art. 27 da Lei 11.771/2008, agências de turismo podem intermediar serviços turísticos, incluindo a <em>"obtenção de passaportes, vistos ou qualquer outro documento necessário à realização de viagens"</em> (§ 4º, inciso I). A Lei 12.974/2014, Art. 4º, inciso I, também autoriza a <em>"obtenção e legalização de documentos para viajantes"</em>.</p>
+
+                    <h3>Voces sao a Policia Federal ou orgao do governo?</h3>
+                    <p><strong>Não.</strong> Este site não faz parte do Google LLC, Facebook Inc., Polícia Federal ou qualquer órgão do governo. Somos uma empresa privada - agência de turismo especializada em desembaraço de documentos para viagens. Você pode optar por fazer todo o processo gratuitamente pelo <a href="https://www.gov.br/servicos/passaporte" target="_blank" style="color: var(--color-accent); text-decoration: underline;">site oficial do governo</a>.</p>
                 </div>
             </div>
         </section>
@@ -1084,6 +1102,12 @@
                         <li><a href="mailto:contato@passaporteexpress.com.br">contato@passaporteexpress.com.br</a></li>
                     </ul>
                 </div>
+            </div>
+            <!-- Footer Disclaimer -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-bottom: 24px;">
+                <p style="font-size: 0.8125rem; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 900px; margin: 0 auto; text-align: center;">
+                    <strong>AVISO LEGAL:</strong> Este site não faz parte do Google LLC ou do Facebook Inc. e não oferecemos nenhum tipo de documento ou serviço do governo. Somos uma agência de turismo especializada em desembaraço de documentos para viagens, contando com assessoria jurídica para casos específicos. Nossa atividade é regulamentada pela Lei nº 11.771/2008 e pela Lei nº 12.974/2014, que autorizam agências de turismo a intermediar a obtenção de passaportes e documentos para viajantes. Para realizar o processo gratuitamente, acesse o <a href="https://www.gov.br/servicos/passaporte" target="_blank" style="color: rgba(255,255,255,0.9); text-decoration: underline;">portal oficial da Polícia Federal</a>.
+                </p>
             </div>
             <div class="footer-bottom">
                 <p>2026 PassaporteExpress. Todos os direitos reservados.</p>
