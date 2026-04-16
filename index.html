@@ -705,9 +705,70 @@
         .overlay.active {
             display: block;
         }
+
+        /* Disclaimer Banner */
+        .disclaimer-banner {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+            color: white;
+            padding: 14px 24px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.875rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            line-height: 1.5;
+        }
+
+        .disclaimer-banner-close {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 18px;
+            transition: background 0.2s;
+        }
+
+        .disclaimer-banner-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .header {
+            top: 60px;
+        }
+
+        .hero {
+            padding-top: 200px;
+        }
+
+        @media (max-width: 768px) {
+            .disclaimer-banner {
+                font-size: 0.85rem;
+                padding: 12px 16px;
+            }
+
+            .hero {
+                padding-top: 180px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Disclaimer Banner -->
+    <div class="disclaimer-banner">
+        <span>Este site não faz parte do Google LLC ou do Facebook Inc. e não oferecemos nenhum tipo de documento ou serviço do governo. Somos uma agência de turismo especializada em desembaraço de documentos para viagens, contando com assessoria jurídica para casos específicos.</span>
+        <button class="disclaimer-banner-close" onclick="closeBanner()">×</button>
+    </div>
+
     <!-- Header -->
     <header class="header">
         <div class="header-inner">
@@ -737,14 +798,15 @@
             <section class="hero">
                 <div class="container">
                     <span class="hero-badge">Assessoria Especializada</span>
-                    <h1>Solicite seu Passaporte de Forma Simples e Rapida</h1>
-                    <p>Servico de assessoria para preenchimento de formularios. Preencha seus dados e receba orientacoes para agilizar o processo de solicitacao do seu passaporte.</p>
+                    <h1>Assessoria Especializada para Solicitação de Passaporte</h1>
+                    <p>Somos uma empresa privada que oferece serviço de assessoria para auxiliá-lo no processo de solicitação do seu passaporte. Você também pode realizar este processo de forma independente e gratuita diretamente no site oficial da Polícia Federal.</p>
                     <button class="hero-cta" onclick="showSection('form')">
                         Iniciar Solicitacao
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                         </svg>
                     </button>
+                    <p style="margin-top: 20px; font-size: 0.9375rem; color: var(--color-text-muted);"><strong>Preferir fazer gratuitamente?</strong> <a href="https://www.gov.br/servicos/passaporte" target="_blank" style="color: var(--color-accent); text-decoration: underline; font-weight: 500;">Acesse o portal oficial da Polícia Federal</a></p>
                 </div>
             </section>
 
@@ -785,27 +847,53 @@
                 </div>
             </section>
 
+            <!-- Service Notice -->
+            <section style="padding: 48px 24px; background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%); text-align: center;">
+                <div class="container">
+                    <h2 style="font-size: 1.75rem; font-weight: 700; color: white; margin-bottom: 12px;">Este e um servico opcional e privado!</h2>
+                    <p style="font-size: 1rem; color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto;">
+                        Nao somos a Policia Federal ou qualquer orgao do governo. Oferecemos assessoria especializada para facilitar seu processo. 
+                        <a href="https://www.gov.br/servicos/passaporte" target="_blank" style="color: #fbbf24; text-decoration: underline; font-weight: 500;">Voce tambem pode fazer gratuitamente pelo portal oficial.</a>
+                    </p>
+                </div>
+            </section>
+
             <!-- Pricing -->
             <section class="pricing" id="pricing">
                 <div class="container">
-                    <h2 class="section-title">Taxas de Servico</h2>
-                    <p class="section-subtitle">Valores correspondentes a cada tipo de solicitacao</p>
+                    <h2 class="section-title">Tabela de Valores Transparentes</h2>
+                    <p class="section-subtitle">Confira os valores da taxa de assessoria + taxa do governo (GRU)</p>
                     <div class="pricing-grid">
                         <div class="pricing-card">
                             <h4>Passaporte Comum</h4>
-                            <p class="price">R$ 257,25</p>
-                            <p class="description">Primeira via ou renovacao</p>
+                            <div style="text-align: left; font-size: 0.875rem; margin: 16px 0; line-height: 1.8;">
+                                <div><strong>Taxa de Assessoria:</strong> R$ 150,00</div>
+                                <div><strong>Taxa do Governo (GRU):</strong> R$ 257,25</div>
+                                <div style="border-top: 1px solid #e5e5e5; padding-top: 8px; margin-top: 8px;"><strong>Total:</strong> R$ 407,25</div>
+                            </div>
+                            <p class="description" style="font-size: 0.8125rem; margin-top: 12px;">Primeira via ou renovacao</p>
                         </div>
                         <div class="pricing-card">
                             <h4>Passaporte Urgente</h4>
-                            <p class="price">R$ 334,42</p>
-                            <p class="description">Com urgencia ou emergencia</p>
+                            <div style="text-align: left; font-size: 0.875rem; margin: 16px 0; line-height: 1.8;">
+                                <div><strong>Taxa de Assessoria:</strong> R$ 200,00</div>
+                                <div><strong>Taxa do Governo (GRU):</strong> R$ 334,42</div>
+                                <div style="border-top: 1px solid #e5e5e5; padding-top: 8px; margin-top: 8px;"><strong>Total:</strong> R$ 534,42</div>
+                            </div>
+                            <p class="description" style="font-size: 0.8125rem; margin-top: 12px;">Com urgencia ou emergencia</p>
                         </div>
                         <div class="pricing-card">
                             <h4>Passaporte Extraviado</h4>
-                            <p class="price">R$ 514,50</p>
-                            <p class="description">Perda sem apresentacao do anterior</p>
+                            <div style="text-align: left; font-size: 0.875rem; margin: 16px 0; line-height: 1.8;">
+                                <div><strong>Taxa de Assessoria:</strong> R$ 200,00</div>
+                                <div><strong>Taxa do Governo (GRU):</strong> R$ 514,50</div>
+                                <div style="border-top: 1px solid #e5e5e5; padding-top: 8px; margin-top: 8px;"><strong>Total:</strong> R$ 714,50</div>
+                            </div>
+                            <p class="description" style="font-size: 0.8125rem; margin-top: 12px;">Perda sem apresentacao do anterior</p>
                         </div>
+                    </div>
+                    <div style="margin-top: 32px; max-width: 600px; margin-left: auto; margin-right: auto; background: #f5f5f5; padding: 20px; border-radius: 8px; font-size: 0.875rem; color: #6b6b6b;">
+                        <p><strong>ℹ️ Informacao Importante:</strong> A taxa de assessoria refere-se ao nosso serviço de auxílio no preenchimento e orientação do processo. A taxa do Governo (GRU) é paga diretamente aos órgãos competentes e é mandatória para todos os solicitantes, independentemente de usar nosso serviço ou não.</p>
                     </div>
                 </div>
             </section>
@@ -958,7 +1046,13 @@
                     <p>Somos um servico de assessoria que auxilia no preenchimento de formularios para solicitacao de passaporte. Oferecemos orientacao e suporte durante todo o processo.</p>
 
                     <h3>Este e um site oficial do governo?</h3>
-                    <p>Nao. Este e um servico privado de assessoria. Para servicos oficiais, consulte o site da Policia Federal.</p>
+                    <p><strong>Nao.</strong> Este e um servico privado de assessoria. <strong>Somos uma empresa independente e nao temos vínculo com a Polícia Federal ou órgãos do governo.</strong> Para servicos oficiais, consulte <a href="https://www.gov.br/servicos/passaporte" target="_blank" style="color: var(--color-accent); text-decoration: underline;">o site oficial da Polícia Federal</a>.</p>
+
+                    <h3>Posso fazer isso gratuitamente?</h3>
+                    <p><strong>Sim!</strong> Você pode realizar o processo de solicitação de passaporte gratuitamente acessando <a href="https://www.gov.br/servicos/passaporte" target="_blank" style="color: var(--color-accent); text-decoration: underline;">o portal oficial do governo</a>. Você pagará apenas a taxa de emissão do documento (GRU) diretamente ao governo. Nosso serviço é opcional e oferece assistência se você preferir orientação especializada.</p>
+
+                    <h3>Qual a diferenca entre sua taxa e a taxa do governo?</h3>
+                    <p>A taxa do governo (GRU) é obrigatória para todos e vai diretamente aos órgãos competentes. Nossa taxa refere-se exclusivamente ao serviço de assessoria e orientação que oferecemos. Você pode escolher fazer o processo sem usar nossos serviços e pagar apenas a GRU.</p>
 
                     <h3>Quais formas de pagamento sao aceitas?</h3>
                     <p>Atualmente aceitamos pagamento via PIX, que oferece confirmacao instantanea.</p>
@@ -971,6 +1065,12 @@
 
                     <h3>Quanto tempo demora o processo?</h3>
                     <p>O preenchimento do formulario leva aproximadamente 10-15 minutos. Apos o pagamento, voce recebera as orientacoes imediatamente.</p>
+
+                    <h3>Essa atividade de assessoria e legal?</h3>
+                    <p><strong>Sim!</strong> A atividade de Agência de Turismo é devidamente regulamentada pela Lei nº 11.771/2008 e pela Lei nº 12.974/2014. Conforme o Art. 27 da Lei 11.771/2008, agências de turismo podem intermediar serviços turísticos, incluindo a <em>"obtenção de passaportes, vistos ou qualquer outro documento necessário à realização de viagens"</em> (§ 4º, inciso I). A Lei 12.974/2014, Art. 4º, inciso I, também autoriza a <em>"obtenção e legalização de documentos para viajantes"</em>.</p>
+
+                    <h3>Voces sao a Policia Federal ou orgao do governo?</h3>
+                    <p><strong>Não.</strong> Este site não faz parte do Google LLC, Facebook Inc., Polícia Federal ou qualquer órgão do governo. Somos uma empresa privada - agência de turismo especializada em desembaraço de documentos para viagens. Você pode optar por fazer todo o processo gratuitamente pelo <a href="https://www.gov.br/servicos/passaporte" target="_blank" style="color: var(--color-accent); text-decoration: underline;">site oficial do governo</a>.</p>
                 </div>
             </div>
         </section>
@@ -985,6 +1085,7 @@
                     <ul>
                         <li><a onclick="showSection('form')">Nova Solicitacao</a></li>
                         <li><a onclick="showSection('faq')">Perguntas Frequentes</a></li>
+                        <li><a href="https://www.gov.br/servicos/passaporte" target="_blank">Portal Oficial do Governo</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1001,6 +1102,12 @@
                         <li><a href="mailto:contato@passaporteexpress.com.br">contato@passaporteexpress.com.br</a></li>
                     </ul>
                 </div>
+            </div>
+            <!-- Footer Disclaimer -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-bottom: 24px;">
+                <p style="font-size: 0.8125rem; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 900px; margin: 0 auto; text-align: center;">
+                    <strong>AVISO LEGAL:</strong> Este site não faz parte do Google LLC ou do Facebook Inc. e não oferecemos nenhum tipo de documento ou serviço do governo. Somos uma agência de turismo especializada em desembaraço de documentos para viagens, contando com assessoria jurídica para casos específicos. Nossa atividade é regulamentada pela Lei nº 11.771/2008 e pela Lei nº 12.974/2014, que autorizam agências de turismo a intermediar a obtenção de passaportes e documentos para viajantes. Para realizar o processo gratuitamente, acesse o <a href="https://www.gov.br/servicos/passaporte" target="_blank" style="color: rgba(255,255,255,0.9); text-decoration: underline;">portal oficial da Polícia Federal</a>.
+                </p>
             </div>
             <div class="footer-bottom">
                 <p>2026 PassaporteExpress. Todos os direitos reservados.</p>
@@ -1028,6 +1135,15 @@
     </div>
 
     <script>
+        // Close disclaimer banner
+        function closeBanner() {
+            document.querySelector('.disclaimer-banner').style.display = 'none';
+            const header = document.querySelector('.header');
+            const hero = document.querySelector('.hero');
+            header.style.top = '0';
+            hero.style.paddingTop = '140px';
+        }
+
         // Show/Hide sections
         function showSection(section) {
             // Hide all sections
