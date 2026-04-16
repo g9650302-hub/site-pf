@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagamento Confirmado</title>
+    <title>Pagamento da Assessoria Confirmado | Passaporte e Turismo</title>
+    <meta name="description" content="Confirmacao do pagamento da taxa de assessoria do nosso servico privado de orientacao.">
+    <meta name="robots" content="noindex, nofollow">
     <link href="bootstrap.min.css" rel="stylesheet">
     <link href="sinpa.css" rel="stylesheet">
     <style>
@@ -73,10 +75,10 @@
         }
         .valor-total {
             font-size: 24px;
-            color: #1351b4;
+            color: #1e3a5f;
         }
         .btn-imprimir {
-            background-color: #1351b4;
+            background-color: #1e3a5f;
             color: white;
             border: none;
             padding: 12px 30px;
@@ -86,7 +88,7 @@
             margin: 5px;
         }
         .btn-imprimir:hover {
-            background-color: #0c3d91;
+            background-color: #152a47;
         }
         .btn-inicio {
             background-color: #6c757d;
@@ -127,16 +129,16 @@
                 </svg>
             </div>
             
-            <h1 class="titulo-sucesso">Pagamento Confirmado!</h1>
-            <p class="subtitulo">Sua solicitacao foi registrada com sucesso.</p>
-            
+            <h1 class="titulo-sucesso">Pagamento da Assessoria Confirmado!</h1>
+            <p class="subtitulo">Seu atendimento foi registrado. Em breve voce recebera as orientacoes.</p>
+
             <div class="detalhes-pagamento">
                 <div class="detalhe-item">
                     <span class="detalhe-label">Numero da Transacao:</span>
                     <span class="detalhe-valor" id="numeroTransacao">-</span>
                 </div>
                 <div class="detalhe-item">
-                    <span class="detalhe-label">Tipo de Taxa:</span>
+                    <span class="detalhe-label">Plano de Assessoria:</span>
                     <span class="detalhe-valor" id="tipoTaxa">-</span>
                 </div>
                 <div class="detalhe-item">
@@ -148,12 +150,12 @@
                     <span class="detalhe-valor valor-total" id="valorPago">-</span>
                 </div>
             </div>
-            
+
             <button class="btn-imprimir" onclick="window.print()">Imprimir Comprovante</button>
             <a href="index.html" class="btn-inicio">Voltar ao Inicio</a>
-            
+
             <div class="aviso">
-                <strong>Importante:</strong> Guarde este comprovante. Ele sera necessario para acompanhar sua solicitacao.
+                <strong>Importante:</strong> Guarde este comprovante do pagamento da taxa de assessoria. Lembre-se de que este valor refere-se exclusivamente ao nosso servico privado de orientacao. A taxa oficial do governo (GRU) deve ser paga separadamente nos canais oficiais. Este servico nao emite nem renova documentos - apenas presta consultoria. Para mais detalhes, consulte o <a href="https://www.gov.br/servicos/passaporte" target="_blank">portal oficial do governo</a>.
             </div>
         </div>
     </div>
@@ -166,9 +168,9 @@
             document.getElementById('numeroTransacao').textContent = pagamento.transactionId;
             
             var tiposTaxa = {
-                'comum': 'Passaporte Comum (Primeira via ou Renovacao)',
-                'urgencia': 'Passaporte com Urgencia/Emergencia',
-                'extravio': 'Passaporte Extraviado'
+                'comum': 'Assessoria - Processo Comum',
+                'urgencia': 'Assessoria - Processo com Urgencia',
+                'extravio': 'Assessoria - Caso Especial'
             };
             document.getElementById('tipoTaxa').textContent = tiposTaxa[pagamento.taxa] || pagamento.taxa;
             
