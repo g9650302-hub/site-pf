@@ -3,8 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Assessoria independente para orientação no processo de passaporte. Suporte especializado no agendamento e preenchimento de formulários.">
-    <title>Passaporte e Turismo | Assessoria Especializada</title>
+    <meta name="description" content="Empresa privada de assessoria e consultoria turistica. Oferecemos orientacao no preenchimento de formularios e agendamento para viajantes. Nao somos vinculados ao governo.">
+    <meta name="keywords" content="assessoria turistica, consultoria de viagens, orientacao para viagens, agencia de turismo">
+    <meta name="author" content="PASSAPORTE TURISMO LTDA">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#1e3a5f">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Passaporte e Turismo | Assessoria Privada Independente">
+    <meta property="og:description" content="Assessoria privada independente. Orientacao e consultoria em processos turisticos. Nao vinculada a orgaos do governo.">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Passaporte e Turismo | Assessoria Privada">
+    <meta name="twitter:description" content="Servico privado de assessoria e consultoria. Independente de orgaos do governo.">
+
+    <title>Passaporte e Turismo | Assessoria Privada Independente</title>
+
+    <!-- Schema.org: Identifying as private business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelAgency",
+      "name": "PASSAPORTE TURISMO LTDA",
+      "description": "Empresa privada de assessoria e consultoria turistica, independente e sem vinculo com orgaos do governo.",
+      "telephone": "+55-93-8192-0612",
+      "email": "beto_contabilidade@hotmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Getulio Vargas, SN",
+        "addressLocality": "Trairao",
+        "addressRegion": "PA",
+        "postalCode": "68198-000",
+        "addressCountry": "BR"
+      },
+      "identifier": "09.229.278/0001-00",
+      "disambiguatingDescription": "Este site nao faz parte do governo, da Policia Federal, do Google LLC ou do Facebook Inc. Oferecemos exclusivamente servicos privados de assessoria."
+    }
+    </script>
     <style>
         :root {
             --color-primary: #1a1a1a;
@@ -715,14 +753,15 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="#" onclick="showSection('home')">Inicio</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#features">Servicos</a></li>
-                    <li><a href="#pricing">Taxas</a></li>
+                    <li><a href="#pricing">Valores</a></li>
                     <li><a href="#" onclick="showSection('faq')">FAQ</a></li>
                 </ul>
             </nav>
                 <a href="#" class="header-cta" onclick="showSection('form')">Iniciar Atendimento</a>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Abrir menu de navegacao" aria-expanded="false">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
@@ -745,6 +784,28 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                         </svg>
                     </button>
+                </div>
+            </section>
+
+            <!-- About / Transparencia -->
+            <section id="sobre" style="padding: 64px 24px; background: var(--color-surface); border-top: 1px solid var(--color-border);">
+                <div class="container">
+                    <h2 class="section-title">Sobre Nos</h2>
+                    <p class="section-subtitle">Empresa privada devidamente registrada e regulamentada</p>
+                    <div style="max-width: 860px; margin: 32px auto 0; background: #f9fafb; border: 1px solid var(--color-border); border-radius: 12px; padding: 32px;">
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 16px; font-size: 0.9375rem; line-height: 1.7;">
+                            <p><strong>Razao Social:</strong> PASSAPORTE TURISMO LTDA</p>
+                            <p><strong>CNPJ:</strong> 09.229.278/0001-00</p>
+                            <p><strong>Endereco:</strong> Rua Getulio Vargas, SN - Altos Cacau, Trairao/PA - CEP 68198-000</p>
+                            <p><strong>Telefone:</strong> (93) 8192-0612</p>
+                            <p><strong>E-mail:</strong> beto_contabilidade@hotmail.com</p>
+                            <p><strong>Natureza Juridica:</strong> Sociedade Empresarial Limitada - Agencia de Turismo</p>
+                            <p><strong>Atividade:</strong> Assessoria privada e consultoria para viajantes. Orientacao no preenchimento de formularios e suporte no agendamento.</p>
+                        </div>
+                        <div style="margin-top: 24px; padding: 16px; background: #fff3cd; border-left: 4px solid #f59e0b; border-radius: 6px; font-size: 0.875rem; color: #78350f; line-height: 1.6;">
+                            <strong>Declaracao de Transparencia:</strong> A PASSAPORTE TURISMO LTDA e uma empresa privada e independente. Este site nao faz parte do Google LLC, Facebook Inc., Policia Federal, Ministerio das Relacoes Exteriores ou qualquer outro orgao do governo. Nao emitimos, nao renovamos e nao fornecemos documentos oficiais. Oferecemos exclusivamente servicos de assessoria e orientacao. Todo o processo de passaporte pode ser realizado gratuitamente pelo <a href="https://www.gov.br/servicos/passaporte" target="_blank" style="color: #78350f; text-decoration: underline;">portal oficial do governo</a>.
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -885,7 +946,7 @@
                     <p>Voce tem direito a acessar, corrigir, excluir ou solicitar a portabilidade de seus dados pessoais. Para exercer esses direitos, entre em contato conosco.</p>
 
                     <h3>6. Contato</h3>
-                    <p>Para questoes sobre esta politica de privacidade, entre em contato atraves do e-mail: contato@passaporteexpress.com.br</p>
+                    <p>Para questoes sobre esta politica de privacidade, entre em contato atraves do e-mail: beto_contabilidade@hotmail.com ou pelo telefone (93) 8192-0612.</p>
                 </div>
             </div>
         </section>
@@ -1036,7 +1097,9 @@
                 <div class="footer-col">
                     <h4>Contato</h4>
                     <ul>
-                        <li><a href="mailto:contato@passaporteexpress.com.br">contato@passaporteexpress.com.br</a></li>
+                        <li><a href="mailto:beto_contabilidade@hotmail.com">beto_contabilidade@hotmail.com</a></li>
+                        <li><a href="tel:+559381920612">(93) 8192-0612</a></li>
+                        <li>Rua Getulio Vargas, SN - Trairao/PA</li>
                     </ul>
                 </div>
             </div>

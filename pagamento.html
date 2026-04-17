@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagamento - Selecione a Taxa</title>
+    <title>Pagamento da Assessoria | Passaporte e Turismo</title>
+    <meta name="description" content="Pagamento da taxa de assessoria do servico privado de orientacao para processo de passaporte.">
+    <meta name="robots" content="noindex, nofollow">
     <link href="bootstrap.min.css" rel="stylesheet">
     <link href="sinpa.css" rel="stylesheet">
     <style>
@@ -17,7 +19,7 @@
             padding: 20px;
         }
         .header-pagamento {
-            background-color: #1351b4;
+            background-color: #1e3a5f;
             color: white;
             padding: 20px;
             text-align: center;
@@ -42,11 +44,11 @@
             transition: all 0.3s ease;
         }
         .taxa-option:hover {
-            border-color: #1351b4;
+            border-color: #1e3a5f;
             background-color: #f8f9fa;
         }
         .taxa-option.selected {
-            border-color: #1351b4;
+            border-color: #1e3a5f;
             background-color: #e8f0fe;
         }
         .taxa-option input[type="radio"] {
@@ -75,10 +77,10 @@
         .taxa-valor {
             font-size: 22px;
             font-weight: bold;
-            color: #1351b4;
+            color: #1e3a5f;
         }
         .btn-pagar {
-            background-color: #1351b4;
+            background-color: #1e3a5f;
             color: white;
             border: none;
             padding: 15px 40px;
@@ -89,7 +91,7 @@
             margin-top: 20px;
         }
         .btn-pagar:hover {
-            background-color: #0c3d91;
+            background-color: #152a47;
         }
         .btn-pagar:disabled {
             background-color: #ccc;
@@ -177,7 +179,7 @@
             width: 20px;
             height: 20px;
             border: 3px solid #f3f3f3;
-            border-top: 3px solid #1351b4;
+            border-top: 3px solid #1e3a5f;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-right: 10px;
@@ -188,20 +190,20 @@
         }
         .valor-total {
             font-size: 28px;
-            color: #1351b4;
+            color: #1e3a5f;
             font-weight: bold;
             margin: 20px 0;
         }
         .info-pix {
             background-color: #e7f3ff;
-            border-left: 4px solid #1351b4;
+            border-left: 4px solid #1e3a5f;
             padding: 15px;
             margin: 20px 0;
             text-align: left;
         }
         .info-pix h4 {
             margin-top: 0;
-            color: #1351b4;
+            color: #1e3a5f;
         }
         .info-pix ul {
             margin-bottom: 0;
@@ -212,52 +214,57 @@
 <body>
     <div class="container-pagamento">
         <div class="header-pagamento">
-            <h1>Pagamento da Taxa</h1>
+            <h1>Pagamento da Assessoria</h1>
+            <p style="font-size: 13px; margin-top: 6px; opacity: 0.9;">Servico privado de orientacao | Passaporte e Turismo</p>
         </div>
-        
+
+        <div style="background: #fff3cd; border: 1px solid #ffeeba; padding: 12px 16px; margin: 16px 0; border-radius: 6px; font-size: 13px; color: #856404;">
+            <strong>Aviso:</strong> Esta e a pagina de pagamento da nossa <strong>taxa de assessoria privada</strong>. Nao somos a Policia Federal nem orgao do governo. A taxa oficial (GRU) do processo de passaporte e paga separadamente nos canais oficiais. Voce pode realizar o processo gratuitamente em <a href="https://www.gov.br/servicos/passaporte" target="_blank" style="color: #856404; text-decoration: underline;">gov.br</a>.
+        </div>
+
         <div class="content-pagamento">
             <!-- Selecao de Taxa -->
             <div class="selecao-container" id="selecaoContainer">
-                <h3>Selecione o tipo de taxa:</h3>
-                <p style="color: #666; margin-bottom: 20px;">Escolha a opcao que corresponde a sua situacao</p>
-                
+                <h3>Selecione o plano de assessoria:</h3>
+                <p style="color: #666; margin-bottom: 20px;">Escolha o plano de orientacao que corresponde ao seu caso</p>
+
                 <div class="taxa-option" onclick="selecionarTaxa(this, 'comum', 257.25)">
                     <label>
                         <input type="radio" name="taxa" value="comum" id="taxaComum">
                         <div class="taxa-info">
-                            <div class="taxa-nome">Passaporte Comum</div>
-                            <div class="taxa-descricao">Primeira via ou renovacao do passaporte</div>
+                            <div class="taxa-nome">Assessoria - Processo Comum</div>
+                            <div class="taxa-descricao">Orientacao para processo de passaporte padrao</div>
                         </div>
                         <div class="taxa-valor">R$ 257,25</div>
                     </label>
                 </div>
-                
+
                 <div class="taxa-option" onclick="selecionarTaxa(this, 'urgencia', 334.42)">
                     <label>
                         <input type="radio" name="taxa" value="urgencia" id="taxaUrgencia">
                         <div class="taxa-info">
-                            <div class="taxa-nome">Passaporte com Urgencia/Emergencia</div>
-                            <div class="taxa-descricao">Para casos de urgencia ou emergencia comprovada</div>
+                            <div class="taxa-nome">Assessoria - Processo com Urgencia</div>
+                            <div class="taxa-descricao">Suporte para casos de urgencia ou emergencia comprovada</div>
                         </div>
                         <div class="taxa-valor">R$ 334,42</div>
                     </label>
                 </div>
-                
+
                 <div class="taxa-option" onclick="selecionarTaxa(this, 'extravio', 514.50)">
                     <label>
                         <input type="radio" name="taxa" value="extravio" id="taxaExtravio">
                         <div class="taxa-info">
-                            <div class="taxa-nome">Passaporte Extraviado</div>
-                            <div class="taxa-descricao">Se voce perdeu o passaporte valido e nao apresenta o antigo</div>
+                            <div class="taxa-nome">Assessoria - Caso Especial</div>
+                            <div class="taxa-descricao">Orientacao em caso de documento anterior extraviado</div>
                         </div>
                         <div class="taxa-valor">R$ 514,50</div>
                     </label>
                 </div>
-                
+
                 <button class="btn-pagar" id="btnContinuar" onclick="gerarPix()" disabled>
-                    Continuar para Pagamento PIX
+                    Continuar para Pagamento via PIX
                 </button>
-                
+
                 <button class="btn-voltar" onclick="window.history.back()">
                     Voltar ao Formulario
                 </button>

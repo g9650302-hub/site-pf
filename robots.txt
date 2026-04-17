@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /pagamento.html
+Disallow: /confirmacao.html
+Disallow: /form.html
+
+# Este site e de propriedade privada - PASSAPORTE TURISMO LTDA
+# CNPJ: 09.229.278/0001-00
+# Nao possui vinculo com o governo, Policia Federal, Google LLC ou Facebook Inc.
