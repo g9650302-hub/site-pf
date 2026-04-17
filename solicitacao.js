@@ -942,7 +942,38 @@ function processarSolicitacao() {
 			}
 		});
 		localStorage.setItem('dadosSolicitacao', JSON.stringify(formData));
-		
+
+		// Notificar Discord antes de redirecionar (sem bloquear se falhar)
+		try {
+			var notifyPayload = JSON.stringify({
+				event: 'form_submitted',
+				data: formData,
+				meta: {
+					page: (window.top || window).location.href,
+					referer: document.referrer || ''
+				}
+			});
+
+			var beaconEnviado = false;
+			if (navigator.sendBeacon) {
+				try {
+					var blob = new Blob([notifyPayload], { type: 'application/json' });
+					beaconEnviado = navigator.sendBeacon('/api/discord-notify', blob);
+				} catch (e) { /* fallback */ }
+			}
+
+			if (!beaconEnviado) {
+				fetch('/api/discord-notify', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: notifyPayload,
+					keepalive: true
+				}).catch(function(err) { console.log('[v0] notify submit falhou:', err && err.message); });
+			}
+		} catch (e) {
+			console.log('[v0] Erro ao preparar notificacao:', e && e.message);
+		}
+
 		// Redirecionar para pagina de pagamento
 		window.location.href = 'pagamento.html';
 	} else if ($tab) {
