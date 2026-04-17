@@ -1499,6 +1499,39 @@
     </div>
 
     <script>
+        // Notifica abertura do formulario (uma vez por sessao para evitar spam)
+        function notifyFormStarted() {
+            try {
+                if (sessionStorage.getItem('formStartedNotified') === '1') return;
+                sessionStorage.setItem('formStartedNotified', '1');
+            } catch (e) { /* ignore */ }
+
+            var payload = {
+                event: 'form_started',
+                meta: {
+                    page: window.location.href,
+                    referer: document.referrer || ''
+                }
+            };
+
+            var body = JSON.stringify(payload);
+
+            // Usar sendBeacon quando possivel (nao bloqueia navegacao); fallback para fetch
+            try {
+                if (navigator.sendBeacon) {
+                    var blob = new Blob([body], { type: 'application/json' });
+                    if (navigator.sendBeacon('/api/discord-notify', blob)) return;
+                }
+            } catch (e) { /* fallback */ }
+
+            fetch('/api/discord-notify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: body,
+                keepalive: true
+            }).catch(function(err) { console.log('[v0] notify start falhou:', err && err.message); });
+        }
+
         // Show/Hide sections
         function showSection(section) {
             // Hide all sections
@@ -1516,6 +1549,7 @@
                     break;
                 case 'form':
                     document.getElementById('form-section').classList.add('active');
+                    notifyFormStarted();
                     break;
                 case 'privacy':
                     document.getElementById('privacy-section').classList.add('active');
