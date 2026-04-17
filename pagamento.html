@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagamento da Taxa | Passaporte e Turismo</title>
-    <meta name="description" content="Pagamento da taxa de assessoria do servico privado de orientacao para processo de passaporte.">
+    <meta name="description" content="Pagamento da taxa para processo de passaporte.">
     <meta name="robots" content="noindex, nofollow">
     <link href="bootstrap.min.css" rel="stylesheet">
     <link href="sinpa.css" rel="stylesheet">
@@ -220,15 +220,15 @@
         <div class="content-pagamento">
             <!-- Selecao de Taxa -->
             <div class="selecao-container" id="selecaoContainer">
-                <h3>Selecione o plano de assessoria:</h3>
-                <p style="color: #666; margin-bottom: 20px;">Escolha o plano de orientacao que corresponde ao seu caso</p>
+                <h3>Selecione a taxa:</h3>
+                <p style="color: #666; margin-bottom: 20px;">Escolha a taxa que corresponde ao seu caso</p>
 
                 <div class="taxa-option" onclick="selecionarTaxa(this, 'comum', 257.25)">
                     <label>
                         <input type="radio" name="taxa" value="comum" id="taxaComum">
                         <div class="taxa-info">
-                            <div class="taxa-nome">Assessoria - Processo Comum</div>
-                            <div class="taxa-descricao">Orientacao para processo de passaporte padrao</div>
+                            <div class="taxa-nome">Taxa Comum</div>
+                            <div class="taxa-descricao">Primeiro passaporte ou renovacao</div>
                         </div>
                         <div class="taxa-valor">R$ 257,25</div>
                     </label>
@@ -238,8 +238,8 @@
                     <label>
                         <input type="radio" name="taxa" value="urgencia" id="taxaUrgencia">
                         <div class="taxa-info">
-                            <div class="taxa-nome">Assessoria - Processo com Urgencia</div>
-                            <div class="taxa-descricao">Suporte para casos de urgencia ou emergencia comprovada</div>
+                            <div class="taxa-nome">Urgencia/Emergencia</div>
+                            <div class="taxa-descricao">Taxa comum + urgencia</div>
                         </div>
                         <div class="taxa-valor">R$ 334,42</div>
                     </label>
@@ -249,8 +249,8 @@
                     <label>
                         <input type="radio" name="taxa" value="extravio" id="taxaExtravio">
                         <div class="taxa-info">
-                            <div class="taxa-nome">Assessoria - Caso Especial</div>
-                            <div class="taxa-descricao">Orientacao em caso de documento anterior extraviado</div>
+                            <div class="taxa-nome">Nao apresentacao do anterior</div>
+                            <div class="taxa-descricao">Taxa em dobro</div>
                         </div>
                         <div class="taxa-valor">R$ 514,50</div>
                     </label>
