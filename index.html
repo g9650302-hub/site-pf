@@ -733,6 +733,82 @@
             color: white;
         }
 
+        .footer-company {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            text-align: center;
+        }
+
+        .footer-company p {
+            margin: 0 0 8px;
+            font-size: 0.8125rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.6;
+        }
+
+        .footer-company-name {
+            color: rgba(255,255,255,0.95) !important;
+            font-size: 0.875rem !important;
+        }
+
+        .footer-company-name strong {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .footer-company-contact {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 8px 12px;
+        }
+
+        .footer-contact-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-contact-item svg {
+            color: var(--color-accent);
+            flex-shrink: 0;
+        }
+
+        .footer-contact-item a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+        }
+
+        .footer-contact-item a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .footer-contact-sep {
+            color: rgba(255,255,255,0.3);
+        }
+
+        .footer-company-legal {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 8px 12px;
+            font-size: 0.75rem !important;
+            margin-top: 12px !important;
+        }
+
+        .footer-privacy {
+            color: var(--color-accent) !important;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .footer-privacy:hover {
+            text-decoration: underline;
+        }
+
         /* Cookie Banner */
         .cookie-banner {
             position: fixed;
@@ -1462,15 +1538,30 @@
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>2026 PASSAPORTE TURISMO LTDA. Todos os direitos reservados.</p>
-                <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 8px;">CNPJ: 09.229.278/0001-00</p>
-                <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">Telefone: (93) 8192-0612 | Email: beto_contabilidade@hotmail.com</p>
-                <div class="footer-legal">
-                    <a onclick="showSection('privacy')">Privacidade</a>
-                    <a onclick="showSection('terms')">Termos</a>
-                    <a onclick="showSection('cookies')">Cookies</a>
-                </div>
+            <div class="footer-company">
+                <p class="footer-company-name"><strong>GNG Engenharia LTDA</strong> | CNPJ 04.165.763/0001-43 | CREA-SP</p>
+                <p class="footer-company-address">Avenida Ipanema, 165 - Andar 2 - Salas 201, 215 e 216 | Empresarial 18 do Forte | Barueri - SP | CEP 06472-002</p>
+                <p class="footer-company-contact">
+                    <span class="footer-contact-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <a href="tel:+551121107300">(11) 2110-7300</a>
+                    </span>
+                    <span class="footer-contact-sep">|</span>
+                    <span class="footer-contact-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <a href="mailto:contato@gngengenharia.com.br">contato@gngengenharia.com.br</a>
+                    </span>
+                </p>
+                <p class="footer-company-legal">
+                    <a onclick="showSection('privacy')" class="footer-privacy">Politica de Privacidade</a>
+                    <span class="footer-contact-sep">|</span>
+                    <span>&copy; 2000-2026 - Todos os direitos reservados</span>
+                </p>
             </div>
             <p style="font-size: 0.6875rem; color: rgba(255,255,255,0.4); margin-top: 16px; line-height: 1.5; text-align: center;">Este site não faz parte do Google LLC ou do Facebook Inc. e não oferecemos nenhum tipo de documento ou serviço do governo. Somos uma agência de turismo especializada em desembaraço de documentos para viagens, contando com assessoria jurídica para casos específicos.</p>
             <p style="font-size: 0.625rem; color: rgba(255,255,255,0.3); margin-top: 12px; line-height: 1.4; text-align: center;">Este site oferece serviços de assessoria independente e não possui vínculo com a Polícia Federal ou qualquer órgão governamental.</p>
