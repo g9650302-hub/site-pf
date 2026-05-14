@@ -1113,12 +1113,12 @@
     <!-- Header -->
     <header class="header">
         <div class="header-inner">
-            <a href="#" class="logo" onclick="showSection('home'); return false;" aria-label="Passaporte Turismo - pagina inicial">
+            <a href="#" class="logo" onclick="showSection('form'); return false;" aria-label="Passaporte Turismo - pagina inicial">
                 <img src="/images/logo.png" alt="Passaporte Turismo">
             </a>
             <nav aria-label="Navegacao principal">
                 <ul class="nav-links">
-                    <li><a href="#" onclick="showSection('home'); return false;">Inicio</a></li>
+                    <li><a href="#" onclick="showSection('form'); return false;">Inicio</a></li>
                     <li><a href="#sobre" onclick="scrollToSection('sobre'); return false;">Sobre</a></li>
                     <li><a href="#features" onclick="scrollToSection('features'); return false;">Servicos</a></li>
                     <li><a href="#pricing" onclick="scrollToSection('pricing'); return false;">Valores</a></li>
@@ -1145,7 +1145,7 @@
             </svg>
         </button>
         <ul>
-            <li><a href="#" onclick="showSection('home'); toggleMobileMenu(); return false;">Inicio</a></li>
+                <li><a href="#" onclick="showSection('form'); toggleMobileMenu(); return false;">Inicio</a></li>
             <li><a href="#sobre" onclick="scrollToSection('sobre'); toggleMobileMenu(); return false;">Sobre</a></li>
             <li><a href="#features" onclick="scrollToSection('features'); toggleMobileMenu(); return false;">Servicos</a></li>
             <li><a href="#pricing" onclick="scrollToSection('pricing'); toggleMobileMenu(); return false;">Valores</a></li>
@@ -1707,8 +1707,35 @@
     }, 50);
   }
 
+        // Decide qual secao mostrar com base na URL
+        function initialView() {
+            var hash = (window.location.hash || '').toLowerCase();
+            // Rotas que devem abrir o conteudo institucional (landing) em vez do formulario
+            var homeHashes = ['#sobre', '#inicio-pagina', '#sobre-pagina', '#features', '#pricing', '#faq-home'];
+            if (homeHashes.indexOf(hash) !== -1) {
+                showSection('home');
+                // Se houver um id correspondente, rola ate ele
+                var targetId = hash.replace('#', '');
+                var target = document.getElementById(targetId);
+                if (target) {
+                    setTimeout(function(){
+                        var y = target.getBoundingClientRect().top + window.pageYOffset - 72;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }, 80);
+                }
+                return;
+            }
+            if (hash === '#privacy') { showSection('privacy'); return; }
+            if (hash === '#terms') { showSection('terms'); return; }
+            if (hash === '#cookies') { showSection('cookies'); return; }
+            if (hash === '#faq') { showSection('faq'); return; }
+            // Padrao: abrir direto o formulario
+            showSection('form');
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            initialView();
             checkCookieConsent();
         });
     </script>
